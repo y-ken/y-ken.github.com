@@ -1,64 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>y-ken.github.com by y-ken</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <title>y-ken.github.com by y-ken</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">y-ken.github.com</h1>
-        <p class="header"></p>
+    <header>
+      <div class="inner">
+        <h1>y-ken.github.com</h1>
+        <h2></h2>
+        <a href="https://github.com/y-ken" class="button"><small>Follow me on</small>GitHub</a>
+      </div>
+    </header>
 
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>Your yet another yum repository.</h3>
 
+<h2>Setup</h2>
 
-        <ul>
-          <li><a class="buttons github" href="https://github.com/y-ken">GitHub Profile</a></li>
-        </ul>
-
-      </header>
-      <section>
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>curl -o /etc/yum.repos.d/ykenstudio.repo https://y-ken.github.com/package/ykenstudio.repo
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h2>Usage</h2>
 
-<h3>Designer Templates</h3>
+<pre><code>$ yum install foo --enablerepo=ykenstudio
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h2>Quick Guide</h2>
 
-<h3>Rather Drive Stick?</h3>
+<p>How to install these products with this repository.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h3>toritonn (CentOS-5.x or 6.x + MySQL-5.0 + toritonn)</h3>
 
-<h3>Authors and Contributors</h3>
+<pre><code>$ sudo yum -y install mecab-0.98-tritonn mecab-ipadic-2.7.0.20070801-tritonn senna MySQL-shared-5.0.87 MySQL-client-5.0.87 MySQL-server-5.0.87  MySQL-devel-5.0.87 --disablerepo=* --enablerepo=ykenstudio
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h3>mroonga (CentOS-6.x + MySQL-5.5 + mroonga)</h3>
 
-<h3>Support or Contact</h3>
+<p>Custom build version of mysql-mroonga for MySQL-5.5 with CentOS-6.x</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
+<pre><code>$ sudo rpm -ivh http://packages.groonga.org/centos/groonga-release-1.1.0-0.noarch.rpm
+$ sudo yum install -y groonga-tokenizer-mecab groonga-libs
+$ sudo yum install -y MySQL-shared MySQL-client MySQL-server MySQL-devel --disablerepo=* --enablerepo=ykenstudio
+$ sudo service mysqld start
+$ sudo yum install -y mysql-mroonga --disablerepo=* --enablerepo=ykenstudio
+</code></pre>
+
+<h3>MySQL-5.5 (not remi, Oracle Official Version)</h3>
+
+<pre><code>$ sudo yum install -y MySQL-shared MySQL-client MySQL-server MySQL-devel --disablerepo=* --enablerepo=ykenstudio
+</code></pre>
+
+<h2>Mirroring Info</h2>
+
+<ul>
+<li>
+<p>Tritonn (MySQL-5.0 + Senna) </p>
+
+<ul>
+<li><a href="http://sourceforge.jp/projects/tritonn/releases/">http://sourceforge.jp/projects/tritonn/releases/</a></li>
+</ul>
+</li>
+<li>
+<p>MySQL-5.5</p>
+
+<ul>
+<li><a href="http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.5/">http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.5/</a></li>
+</ul>
+</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+  
   </body>
 </html>
